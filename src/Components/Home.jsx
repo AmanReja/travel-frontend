@@ -7,7 +7,7 @@ function Home() {
   return (
     <>
       <section className="bg-white">
-        <div className=" flex justify-center px-[50px] py-[100px]">
+        <div className=" flex flex-col sm:flex-row justify-center px-[50px] py-[100px]">
           <div className="mr-auto place-self-center lg:col-span-7">
             <h1 className="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl ">
               Travel around the world <br />
@@ -18,7 +18,7 @@ function Home() {
               Itineraries.
             </p>
           </div>
-          <div className=" w-[100%] h-[500px]">
+          <div className="sec-1-img w-[100%] h-[500px]">
             <img
               className="rounded w-[100%] h-full object-cover"
               src={img1}
@@ -28,7 +28,7 @@ function Home() {
         </div>
       </section>
 
-      <section>
+      <section className="w-[100%]">
         <svg
           style={{ backgroundColor: "#a2d9ff" }}
           xmlns="http://www.w3.org/2000/svg"
@@ -53,13 +53,13 @@ function Home() {
       {/* Start block */}
       {/* End block */}
       {/* Start block */}
-      <section className="w-full flex ">
+      <section className="w-full flex sm:flex-row flex-col justify-center items-center ">
         <Card></Card>
-        <div className="flex flex-col px-[150px] w-[50%] justify-center items-start gap-[20px]">
-          <h2 className="max-w-2xl mb-4 text-4xl font-extrabold leading-none">
+        <div className="flex flex-col sm:px-[150px] px-[12px] sm:w-[50%] w-full justify-center sm:items-start items-center gap-[20px]">
+          <h2 className="sm:max-w-2xl w-full mb-4 text-4xl sm:text-left text-center font-extrabold leading-none">
             Amazing places to enjoy your travel
           </h2>
-          <p className="">
+          <p className="sm:text-left text-center">
             Etiam facilisis, sapien quis porta dignissim, orci nisi pharetra
             dui, varius vehicula ligula nulla sit amet lorem. Aenean in
             vestibulum quam. Cras commodo varius neque, non gravida diam

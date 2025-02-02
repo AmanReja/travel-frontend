@@ -1,0 +1,9 @@
+
+@media only screen and (max-width:600px){
+    html,body{
+        overflow-x: hidden;
+    }
+    .sec-1-img {
+        width: 100%;
+    }
+}

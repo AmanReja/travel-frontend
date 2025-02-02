@@ -102,7 +102,7 @@ function Navbar() {
                 </li>
               </ul>
             </div>
-            <div className="w-[250px] h-[60px] flex justify-center items-center rounded gap-[5px] shadow-2xl">
+            <div className="w-[250px] h-[60px] sm:flex hidden justify-center  items-center rounded gap-[5px] shadow-2xl">
               <div className="max-w-md mx-auto">
                 <div className="relative flex items-center w-full h-12 rounded-lg focus-within:shadow-lg bg-white overflow-hidden">
                   <div className="grid place-items-center h-full w-12 text-gray-300">
