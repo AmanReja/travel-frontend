@@ -3,7 +3,7 @@ import React from "react";
 function Card() {
   return (
     <>
-      <div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">
+      <div class="relative sm:px-0 px-[20px] flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">
         <div class="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
           <img
             src="https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80"

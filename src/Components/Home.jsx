@@ -53,7 +53,7 @@ function Home() {
       {/* Start block */}
       {/* End block */}
       {/* Start block */}
-      <section className="sm:w-full w-full overflow-hidden sm:px-0 px-[25px]  flex sm:flex-row flex-col justify-center items-center ">
+      <section className="sm:w-full w-full overflow-hidden sm:px-0 px-[40px]  flex sm:flex-row flex-col justify-center items-center ">
         <Card></Card>
         <div className="flex flex-col sm:px-[150px] px-[12px] sm:w-[50%] w-full justify-center sm:items-start items-center gap-[20px]">
           <h2 className="sm:max-w-2xl w-full mb-4 text-4xl sm:text-left text-center font-extrabold leading-none">
