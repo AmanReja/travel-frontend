@@ -12,7 +12,7 @@ export const useAuthstore = create((set) => ({
   isSigningUp: false,
 
   signup: async (newuser, navigate) => {
-    set({ isSigningUp: false });
+    set({ isSigningUp: true });
     console.log(34, newuser.userpass);
 
     const request = {
@@ -26,11 +26,13 @@ export const useAuthstore = create((set) => ({
     console.log(data);
 
     set({ isSigningUp: false });
-    if (data._id !== null) {
+    if (response.status === 200) {
       toast.success("signup successfull");
+      navigate("/");
+    } else if (response.status === 400) {
+      toast.error("user already exist");
     } else {
       toast.error("signup failed");
-      navigate("/");
     }
   },
 
