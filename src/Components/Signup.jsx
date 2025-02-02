@@ -42,7 +42,7 @@ function Signup() {
         </svg>
       </div>
 
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center h-screen overflow-hidden">
         <div className="xl:w-[700px] px-10 h-[610px] pt-[150px] rounded-3xl xl:shadow-xl">
           <div className="w-[70px] h-[70px] absolute right-[60%]">
             <img

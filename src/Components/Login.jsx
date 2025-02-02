@@ -19,7 +19,6 @@ function Login() {
       };
 
       await login(oldUser, navigate);
-      
     } catch (error) {
       console.log("error in log", error);
     }
@@ -27,10 +26,10 @@ function Login() {
 
   return (
     <>
-      <div>
+      <div className="w-full ">
         <svg
           style={{ backgroundColor: "#e7008a" }}
-          className="absolute w-[100%]"
+          className="absolute sm:w-[100%] w-full"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 320"
         >
@@ -42,8 +41,8 @@ function Login() {
         </svg>
       </div>
 
-      <div className="flex justify-center items-center h-screen">
-        <div className="xl:w-[700px] px-10 h-[450px] pt-[90px] rounded-3xl xl:shadow-xl">
+      <div className="flex justify-center items-center h-screen  overflow-hidden">
+        <div className="xl:w-[700px] w-full h-[600px] px-10 sm:h-[450px] pt-[90px] rounded-3xl xl:shadow-xl">
           <h1 className="text-center text-3xl font-bold mt-2 mb-2 z-30 relative top-[20px] left-[100px]">
             Login
           </h1>

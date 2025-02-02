@@ -7,7 +7,7 @@ function Home() {
   return (
     <>
       <section className="bg-white">
-        <div className=" flex flex-col sm:flex-row justify-center px-[50px] py-[100px]">
+        <div className=" flex flex-col sm:flex-row justify-center sm:px-[50px] px-[12px] py-[80px] sm:py-[100px]">
           <div className="mr-auto place-self-center lg:col-span-7">
             <h1 className="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl ">
               Travel around the world <br />
@@ -18,7 +18,7 @@ function Home() {
               Itineraries.
             </p>
           </div>
-          <div className="sec-1-img w-[100%] h-[500px]">
+          <div className=" w-[100%] h-[350px] sm:h-[500px]">
             <img
               className="rounded w-[100%] h-full object-cover"
               src={img1}
