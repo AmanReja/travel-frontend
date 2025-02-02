@@ -18,7 +18,7 @@ function Home() {
               Itineraries.
             </p>
           </div>
-          <div className=" w-[100%] h-[350px] sm:h-[500px]">
+          <div className="sec-1-img w-[100%] sm:h-[500px]">
             <img
               className="rounded w-[100%] h-full object-cover"
               src={img1}
@@ -53,7 +53,7 @@ function Home() {
       {/* Start block */}
       {/* End block */}
       {/* Start block */}
-      <section className="w-full flex sm:flex-row flex-col justify-center items-center ">
+      <section className="sm:w-full w-full sm:px-0 px-[12px]  flex sm:flex-row flex-col justify-center items-center ">
         <Card></Card>
         <div className="flex flex-col sm:px-[150px] px-[12px] sm:w-[50%] w-full justify-center sm:items-start items-center gap-[20px]">
           <h2 className="sm:max-w-2xl w-full mb-4 text-4xl sm:text-left text-center font-extrabold leading-none">
