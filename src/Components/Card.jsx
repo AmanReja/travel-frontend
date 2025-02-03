@@ -1,19 +1,83 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import pl1 from "../assets/places/1.jpg";
+import pl2 from "../assets/places/2.jpg";
+import pl3 from "../assets/places/3.jpg";
+import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 
 function Card() {
+  const [currentindex, setCurrentindex] = useState(0);
+
+  const places = [
+    {
+      name: "Mountain,dubai",
+      ret: 4,
+      image: pl1
+    },
+    {
+      name: "charchiard,paris",
+      ret: 5,
+      image: pl2
+    },
+    {
+      name: "maldives,thiland",
+      ret: 4.2,
+      image: pl3
+    }
+  ];
+
+  const previous = () => {
+    if (currentindex === 0) {
+      setCurrentindex(places.length - 1);
+    } else {
+      setCurrentindex(currentindex - 1);
+    }
+  };
+
+  const next = () => {
+    if (currentindex === places.length - 1) {
+      setCurrentindex(0);
+    } else {
+      setCurrentindex(currentindex + 1);
+    }
+  };
+  const handleImageClick = (e) => {
+    const imageWidth = e.target.width;
+    const clickPosition = e.nativeEvent.offsetX; // Get the horizontal position of the click
+
+    if (clickPosition < imageWidth / 2) {
+      previous(); // Clicked on the left side, show the previous place
+    } else {
+      next(); // Clicked on the right side, show the next place
+    }
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      return next();
+    }, 80000);
+
+    return () => {
+      return clearInterval(interval);
+    };
+  }, [currentindex]);
+
   return (
     <>
-      <div class="relative sm:px-0 px-[20px] flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">
-        <div class="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
+      <div class="relative sm:px-0 px-[20px] flex flex-col my-6 bg-white shadow-sm border transition-all duration-300 border-slate-200 rounded-lg w-96">
+        <div
+          onClick={handleImageClick}
+          class="relative h-56 m-2.5 overflow-hidden text-white rounded-md transition-all duration-300"
+        >
           <img
-            src="https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80"
+            className=" duration-[0.2s]"
+            src={places[currentindex]?.image}
             alt="card-image"
           />
         </div>
         <div class="p-4">
           <div class="flex items-center mb-2">
-            <h6 class="text-slate-800 text-xl font-semibold">
-              Wooden House, Florida
+            <h6 class="text-slate-800 text-xl font-semibold duration-[0.2s]">
+              {places[currentindex]?.name}
             </h6>
 
             <div class="flex items-center gap-0 5 ml-auto">
@@ -29,7 +93,9 @@ function Card() {
                   clip-rule="evenodd"
                 ></path>
               </svg>
-              <span class="text-slate-600 ml-1.5">5.0</span>
+              <span class="text-slate-600 ml-1.5 duration-[0.2s]">
+                {places[currentindex]?.ret}
+              </span>
             </div>
           </div>
 
@@ -140,6 +206,20 @@ function Card() {
           >
             Reserve
           </button>
+        </div>
+        <div className="flex items-center justify-between px-[50px] py-[20px]">
+          <div
+            onClick={previous}
+            className="  relative top-[90%] flex items-center justify-center w-[80px] text-2xl rounded-full p-2 bg-sky-400 cursor-pointer hover:bg-lime-400 "
+          >
+            <BsChevronCompactLeft size={30} />
+          </div>
+          <div
+            onClick={next}
+            className="relative top-[90%] flex items-center justify-center w-[80px] text-2xl rounded-full p-2 bg-sky-400 cursor-pointer hover:bg-lime-400"
+          >
+            <BsChevronCompactRight size={30} />
+          </div>
         </div>
       </div>
     </>
