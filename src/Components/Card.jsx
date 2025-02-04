@@ -54,7 +54,7 @@ function Card() {
   useEffect(() => {
     const interval = setInterval(() => {
       return next();
-    }, 80000);
+    }, 2000);
 
     return () => {
       return clearInterval(interval);
