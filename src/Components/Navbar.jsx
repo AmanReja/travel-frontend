@@ -6,7 +6,12 @@ import { Link } from "react-router-dom";
 function Navbar() {
   const [profile, setProfile] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true); // State to track navbar visibility
-  const [lastScrollY, setLastScrollY] = useState(0); // Track the last scroll position
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [menu, setMenu] = useState(false);
+
+  const handelMenu = () => {
+    setMenu((prev) => !prev);
+  };
 
   // Function to open/close the profile menu
   const openProfile = () => {
@@ -65,7 +70,7 @@ function Navbar() {
                 Travelia
               </span>
             </a>
-            <div className="flex items-center lg:order-2">
+            <div className="flex relative sm:right-4  items-center lg:order-2">
               <Link
                 to={"/login"}
                 className="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800"
@@ -74,7 +79,31 @@ function Navbar() {
               </Link>
             </div>
             <div
-              className="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1"
+              onClick={handelMenu}
+              className={`w-[50px] flex flex-col justify-between  duration-300 ${
+                menu ? "gap-0" : "gap-[8px]"
+              }`}
+            >
+              <div
+                className={`w-[30px]  duration-300 ${
+                  menu ? "rotate-45" : ""
+                } h-[2px] bg-black`}
+              ></div>
+              <div
+                className={`w-[30px] duration-300${
+                  menu ? "hidden w-[0px]" : "block w-[30px]"
+                } h-[2px] bg-black`}
+              ></div>
+              <div
+                className={`w-[30px] duration-300 ${
+                  menu ? "-rotate-45" : ""
+                } h-[2px] bg-black`}
+              ></div>
+            </div>
+            <div
+              className={`items-center justify-between ${
+                menu ? "block" : "hidden"
+              } w-full lg:flex lg:w-auto lg:order-1`}
               id="mobile-menu-2"
             >
               <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
