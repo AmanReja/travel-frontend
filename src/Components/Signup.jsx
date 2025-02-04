@@ -43,7 +43,7 @@ function Signup() {
       </div>
 
       <div className="flex justify-center items-center h-screen overflow-hidden">
-        <div className="xl:w-[700px] px-10 h-[610px] pt-[150px] rounded-3xl xl:shadow-xl">
+        <div className="xl:w-[700px] px-10 h-[610px] pt-[150px] rounded-3xl xl:shadow-xl z-50">
           <div className="w-[70px] h-[70px] absolute right-[60%]">
             <img
               className="rounded-full h-full w-full object-cover "
@@ -55,7 +55,7 @@ function Signup() {
           <h1 className="text-center text-3xl font-bold mt-2 mb-2 z-30 relative top-[20px] left-[100px]">
             Sign UP
           </h1>
-          <hr />
+
           <div className="flex justify-center mt-10">
             <form
               onSubmit={(e) => {
