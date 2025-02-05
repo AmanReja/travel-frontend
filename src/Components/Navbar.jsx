@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import userpng from "../assets/images/profile.jpg";
 import timg from "../assets/logo/5.png";
 import { Link } from "react-router-dom";
+import searchContext from "./Context/searchContext";
 
 function Navbar() {
   const [profile, setProfile] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true); // State to track navbar visibility
   const [lastScrollY, setLastScrollY] = useState(0);
   const [menu, setMenu] = useState(false);
+  const { search, setSearch } = useContext(searchContext);
 
   const handelMenu = () => {
     setMenu((prev) => !prev);
@@ -91,7 +93,7 @@ function Navbar() {
               ></div>
               <div
                 className={`w-[30px] duration-300${
-                  menu ? "hidden w-[0px]" : "block w-[30px]"
+                  menu ? "hidden w-0" : ""
                 } h-[2px] bg-black`}
               ></div>
               <div
@@ -151,6 +153,9 @@ function Navbar() {
                     </svg>
                   </div>
                   <input
+                    onChange={(e) => {
+                      setSearch(e.target.value);
+                    }}
                     className="peer h-full w-full outline-none text-sm text-gray-700 pr-2"
                     type="text"
                     id="search"

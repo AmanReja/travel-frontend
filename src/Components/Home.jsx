@@ -1,9 +1,11 @@
-import React from "react";
+import { React, useContext } from "react";
 import img1 from "../assets/travel/1.jpg";
 import Card from "./Card";
 import vid1 from "../assets/video/vd1.mp4";
+import searchContext from "./Context/searchContext";
 
 function Home() {
+  const { search, setSearch } = useContext(searchContext);
   return (
     <>
       <section className="bg-white">

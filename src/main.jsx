@@ -13,6 +13,7 @@ import Home from "./Components/Home.jsx";
 import Login from "./Components/Login.jsx";
 import Signup from "./Components/Signup.jsx";
 import Footer from "./Components/Footer.jsx";
+import { SearchProvider } from "./Components/Context/searchContext.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,7 +27,9 @@ const router = createBrowserRouter(
 );
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>
+  <SearchProvider>
+    <StrictMode>
+      <RouterProvider router={router} />
+    </StrictMode>
+  </SearchProvider>
 );
