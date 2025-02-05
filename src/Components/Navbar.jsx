@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import userpng from "../assets/images/profile.jpg";
 import timg from "../assets/logo/5.png";
 import { Link } from "react-router-dom";
@@ -9,10 +9,54 @@ function Navbar() {
   const [showNavbar, setShowNavbar] = useState(true); // State to track navbar visibility
   const [lastScrollY, setLastScrollY] = useState(0);
   const [menu, setMenu] = useState(false);
+  const [container, setContainer] = useState(false);
   const { search, setSearch } = useContext(searchContext);
+  const searchContainerRef = useRef(null);
+  // const [places, setPlaces] = useState([]);
+  // const upSearch = search;
+  // console.log(upSearch);
+
+  const placesData = [
+    {
+      name: "Eiffel Tower",
+      location: "Paris, France",
+      description:
+        "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France.",
+      image:
+        "https://images.unsplash.com/photo-1499678329028-101435549a4e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      name: "Great Wall of China",
+      location: "Beijing, China",
+      description:
+        "The Great Wall of China is a series of fortifications made of various materials, such as stone, brick, tamped earth, and wood, that stretch across northern China.",
+      image:
+        "https://images.unsplash.com/photo-1598901627264-c1d0c98a61f1?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      name: "Machu Picchu",
+      location: "Cusco Region, Peru",
+      description:
+        "Machu Picchu is a 15th-century Inca citadel located in the Eastern Cordillera of southern Peru on a mountain ridge. It is one of the most iconic archaeological sites in the world.",
+      image:
+        "https://images.unsplash.com/photo-1564401003800-3cd8ced29bbe?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      name: "Sydney Opera House",
+      location: "Sydney, Australia",
+      description:
+        "The Sydney Opera House is a multi-venue performing arts center in Sydney, known for its distinctive white sail-like design and as a UNESCO World Heritage Site.",
+      image:
+        "https://images.unsplash.com/photo-1598903622307-c7a3618dcba9?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    }
+    // Add the other places here...
+  ];
 
   const handelMenu = () => {
     setMenu((prev) => !prev);
+  };
+  const showContainer = () => {
+    setContainer((prev) => !prev);
   };
 
   // Function to open/close the profile menu
@@ -33,6 +77,23 @@ function Navbar() {
   };
 
   useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        searchContainerRef.current &&
+        !searchContainerRef.current.contains(event.target)
+      ) {
+        setContainer(false); // Close search container if clicked outside
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside); // Clean up the event listener
+    };
+  }, []);
+
+  useEffect(() => {
     // Add event listener for scroll
     window.addEventListener("scroll", handleScroll);
 
@@ -49,6 +110,41 @@ function Navbar() {
           showNavbar ? "translate-y-0" : "-translate-y-[100%]"
         }`}
       >
+        <div
+          class={`absolute flex flex-col my-6 ${
+            container ? "block" : "hidden"
+          } bg-white shadow-sm border border-slate-200 rounded-lg w-96`}
+        >
+          <div class="p-4">
+            <div class="mb-4 flex items-center justify-between">
+              <h5 class="text-slate-800 text-lg font-semibold">All places</h5>
+              <a href="#" class="text-slate-600">
+                View all
+              </a>
+            </div>
+            {placesData.map((data) => (
+              <div class="divide-y divide-slate-200">
+                <div class="flex items-center justify-between pb-3 pt-3 last:pb-0">
+                  <div class="flex items-center gap-x-3">
+                    <img
+                      src={data.image}
+                      alt="Maria Jimenez"
+                      class="relative inline-block h-8 w-8 rounded-full object-cover object-center"
+                    />
+                    <div>
+                      <h6 class="text-slate-800 font-semibold">{data.name}</h6>
+                      <p class="text-slate-600 text-sm">
+                        {data.location && data.description}
+                      </p>
+                    </div>
+                  </div>
+                  <h6 class="text-slate-600 font-medium">$400</h6>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <div
           className={`font-extralight text-[18px] ${
             profile ? "block" : "hidden"
@@ -153,6 +249,8 @@ function Navbar() {
                     </svg>
                   </div>
                   <input
+                    ref={searchContainerRef}
+                    onClick={showContainer}
                     onChange={(e) => {
                       setSearch(e.target.value);
                     }}
