@@ -146,7 +146,7 @@ function Navbar() {
         </div>
 
         <div
-          className={`font-extralight text-[18px] ${
+          className={`font-extralight text-[18px]  ${
             profile ? "block" : "hidden"
           } w-[200px] h-[100px] absolute right-[200px] top-[90px] flex-col flex justify-center items-center shadow-2xl transition-all duration-300 uppercase`}
         >
@@ -178,7 +178,7 @@ function Navbar() {
             </div>
             <div
               onClick={handelMenu}
-              className={`w-[50px] flex flex-col justify-between sm:hidden   duration-300 ${
+              className={`w-[50px]  flex flex-col justify-between sm:hidden   duration-300 ${
                 menu ? "gap-0" : "gap-[8px]"
               }`}
             >
@@ -188,10 +188,11 @@ function Navbar() {
                 } h-[2px] bg-black`}
               ></div>
               <div
-                className={`w-[30px] duration-300${
-                  menu ? "hidden w-0" : ""
+                className={`w-[30px]  duration-300 ${
+                  menu ? "hidden" : ""
                 } h-[2px] bg-black`}
               ></div>
+
               <div
                 className={`w-[30px] duration-300 ${
                   menu ? "-rotate-45" : ""
