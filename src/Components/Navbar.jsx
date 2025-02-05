@@ -82,7 +82,7 @@ function Navbar() {
             </div>
             <div
               onClick={handelMenu}
-              className={`w-[50px] flex flex-col justify-between  duration-300 ${
+              className={`w-[50px] flex flex-col justify-between sm:hidden   duration-300 ${
                 menu ? "gap-0" : "gap-[8px]"
               }`}
             >
